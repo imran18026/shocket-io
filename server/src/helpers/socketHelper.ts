@@ -7,6 +7,16 @@ const socket = (io: Server) => {
   io.on('connection', socket => {
     logger.info(colors.blue('A user connected successfully'));
 
+    socket.on('join', ({ room, name }, callback) => {
+      console.log(name, room);
+      const error = true;
+      if (error) {
+        callback({
+          error: 'error',
+        });
+      }
+    });
+
     //disconnect a user
     socket.on('disconnect', () => {
       logger.info(colors.red('A user disconnect'));

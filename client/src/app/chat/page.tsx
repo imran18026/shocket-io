@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 let socket;
 const page = () => {
@@ -12,8 +12,12 @@ const page = () => {
 
   useEffect(() => {
     socket = io(endPoint);
+    socket.emit("join", {
+      name,
+      room,
+    });
     console.log(socket);
-  }, []);
+  }, [endPoint]);
 
   return (
     <div>
