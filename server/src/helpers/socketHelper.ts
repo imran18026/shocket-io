@@ -3,7 +3,7 @@ import { Server } from 'socket.io';
 import { logger } from '../shared/logger';
 
 const socket = (io: Server) => {
-  // connet a user
+  // connet a new user
   io.on('connection', socket => {
     logger.info(colors.blue('A user connected successfully'));
 
